@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="../static/img/logo.jpg">`
+  <title>Doodle prediction</title>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-N8DsABZCqc1XWbg/bAlIDk7AS/yNzT5fcKzg/TwfmTuUqZhGquVmpb5VvfmLcMzp" crossorigin="anonymous">
+
+      <link href="https://www.jqueryscript.net/demo/Extensible-Html5-Drawing-Widget-Literally/lib/css/colorpicker.css" rel="stylesheet">
+      <link href="https://www.jqueryscript.net/demo/Extensible-Html5-Drawing-Widget-Literally/lib/css/literally.css" rel="stylesheet">
+
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+     
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+      <script src="../static/js/logic.js"></script>
+
+
+<!-- Load the top of the HTML page while loading -->
+<script>
+    $(document).ready(function(){
+      $(window).scrollTop(0);
+  });
+</script>
+
+<!-- Add a pencil cursor on the page -->
+
+<style type="text/css">* {cursor: url(http://ani.cursors-4u.net/others/oth-9/oth843.cur), auto !important;} </style>
+
+<!-- Third Party plugin to create the doodle -->
+<style type="text/css">
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+  }
+
+  .fs-container {
+    width: 768px;
+    height: 300px;
+    margin: auto;
+  }
+
+  .literally {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+</head>
+
+<body>
+
+    
+
+  <!-- Doodle prediction header -->
+
+  <div class="container">
+      
+    <div class="row">
+      <!-- <div class="col-xs-12 col-md-12"> -->
+          
+        <h1 class="alert-danger">Doodle Prediction</h1>
+        <ol class="breadcrumb col-md-3 text-danger ">
+            <li class="breadcrumb-item active ml-auto"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/slides">Slides</a></li>
+          </ol>
+
+      <!-- </div> -->
+    </div>
+
+    
+    <div class="row">
+        <blockquote class="blockquote">
+          <p class="text-danger mb-0">Welcome to my website. Please decide on an object in the list shown below and let the 
+            <strong>Keras CNN model</strong> predict your drawing. 
+            A fun representation of the prediction category would be shown in the results. Hope you enjoy!</p>
+        </blockquote>
+        
+    </div>
+
+
+
+    <div class="row">
+      <!-- <div class="col-xs-12  col-md-9">
+        <div class="col-md-4" > -->
+           <img src="../static/img/qdimg.png" alt="QuickDrawImage" width="30%" height="300">
+       <!-- </div> -->
+
+       
+       <!-- <div class="col-md-6 "> -->
+ <div class="fs-container" margin="0px"> 
+  
+              <div class="literally" width="50px" background-color="blue">
+                <canvas width="100px" id="maincanvas"></canvas></div>
+            </div>
+        
+            <script src="../static/js/literallycanvas.fat.js"></script>
+            <script type="text/javascript">
+              $(document).ready(function() {
+
+                     
+                // disable scrolling on touch devices so we can actually draw
+                $(document).bind('touchmove', function(e) {
+                  if (e.target === document.documentElement) {
+                    return e.preventDefault();
+                  }
+                });
+                     
+                // the only LC-specific thing we have to do
+                $('.literally').literallycanvas();
+               
+              });
+            </script> 
+            
+                       
+      </div>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <!-- <form method=post enctype=multipart/form-data>
+                 <button type="button" class="btn btn-outline-success" id="predict" onclick="submitted()">Predict my drawing</button>
+            </form>            -->
+            <!-- <form method="POST" enctype=multipart/form-data> -->
+              <input class="btn btn-outline-success" type =button value ="Predict my drawing" onclick="submitted()">
+
+              <input class="btn btn-outline-danger" type =button value ="Clear Predictions" onclick="clearpredictions()">
+              <!-- <input type="file" class="custom-file-input" name="image" id="image">   -->
+            <!-- </form> -->
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <h4 class="text-danger"><p>Input Image</p></h4>
+            <img id="inputimage" name="inputimage" width=50% >   
+                 
+            <!-- style="display:none" -->
+        </div>
+          
+          <div class="col-md-6">
+             <h4 class="text-danger"> <p>Predicted Image</p> </h4>
+              <img id="predictedimage" width=50%>
+          </div>
+
+      </div>
+
+
+    </div>
+
+    <!-- <div class="row">
+      <div class="col-xs-12  col-md-9">
+        <div class="article"></div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Footer-->
+  <div id="footer" class="container fixed-bottom table-danger">
+   <h4> <p>Designed by Meenakshi Nadimuthu</p> </h4>
+   
+  </div>
+
+</body>
+
+</html>

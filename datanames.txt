@@ -1,0 +1,10 @@
+airplane
+apple
+butterfly
+coffee cup
+flower
+map
+pineapple
+rainbow
+snowman
+traffic light
