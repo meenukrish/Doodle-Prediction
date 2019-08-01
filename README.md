@@ -26,3 +26,8 @@ Keras , Scikit learn Numpy , Matplotlib , PIL Base64 , UUID , Flask Javascript H
 
 # CNN Model diagram:
 
+![Doodle Prediction-Keras CNN](https://github.com/meenukrish/Doodle-Prediction/blob/master/KerasCNN.png)
+
+# How does it work? 
+
+![How does it work?](https://github.com/meenukrish/Doodle-Prediction/blob/master/How%20does%20it%20work.png)
