@@ -15,10 +15,13 @@ import matplotlib.image as mpimg
 from keras import backend as K
 from PIL import Image
 import io
+import boto3
+import requests
+from io import BytesIO
 
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = './lib/inputimages'
+# app.config['UPLOAD_FOLDER'] = './lib/inputimages'
 
 model = None
 graph = None
@@ -31,9 +34,18 @@ def qdload_model():
 
 def prepareimage(filepath):
     
-    image_size = (28, 28)
-    im = image.load_img(filepath, target_size=image_size, grayscale=True)
-             
+
+### OLD code when file is uploaded to local filesystem
+    # image_size = (28, 28)
+    # im = image.load_img(filepath, target_size=image_size, grayscale=True)
+
+### New code when file is uploaded AWS S3 bucket.
+    if filepath.startswith('https://'):
+        response = requests.get(filepath)
+        s3image = Image.open(BytesIO(response.content)).convert('L')
+        im = s3image.resize((28, 28))
+
+
     imagearr = img_to_array(im)
     # imagearr.shape
 
@@ -64,6 +76,9 @@ def slides():
 
 @app.route("/predict", methods=['GET', 'POST'])
 def predictimage():
+
+    qdload_model()
+    
     result = {"success": False}
     if request.method == 'POST':
 
@@ -78,12 +93,26 @@ def predictimage():
         randomString  = randomString.upper()[0:8] # convert it in a uppercase letter and length 5 letters.
 
         filename = f"./lib/inputimages/{randomString}.png"
+        s3filename = f"{randomString}.png"
 
-        image_result = open(filename, "wb")
-        image_result.write(data)
-        image_result.close()
+        #### OLD code to save images to filesystem.
+      
+        # image_result = open(filename, "wb")
+        # image_result.write(data)
+        # image_result.close()
 
-        image = prepareimage(filename)
+
+        ######## UPLOAD TO AWS S3 BUCKET #######
+
+        S3_BUCKET = os.environ['S3_BUCKET']
+        s3= boto3.resource('s3')
+        s3.Bucket(S3_BUCKET).put_object(Key=s3filename, Body=data, ACL ='public-read')
+        print("########### file uploaded to s3 successfully ###############")
+        
+        s3fileurl = f"https://doodlepredictionimages.s3-us-west-1.amazonaws.com/{s3filename}"
+
+        image = prepareimage(s3fileurl)
+
 
         global model
         global graph
