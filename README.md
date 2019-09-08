@@ -2,9 +2,8 @@
 Prediction of hand-drawn Doodle by using Keras CNN model. Googles - Quick draw dataset was used to train the model. 
 Keras , Scikit learn Numpy , Matplotlib , PIL Base64 , UUID , Flask Javascript HTML5/ Bootswatch CSS. 
 
-The website has been deployed 
+The website has been deployed to this website -- > [https://doodleprediction.herokuapp.com](https://doodleprediction.herokuapp.com/)
 
-[https://doodleprediction.herokuapp.com](https://doodleprediction.herokuapp.com/)
 
 
 
