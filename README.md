@@ -4,9 +4,11 @@ Keras , Scikit learn Numpy , Matplotlib , PIL Base64 , UUID , Flask Javascript H
 
 The website has been deployed to this website -- > [https://doodleprediction.herokuapp.com](https://doodleprediction.herokuapp.com/)
 
+Sample images of predictions can be viewed from this link  -- >[Predicted doodle Images](https://drive.google.com/open?id=1rbRee0x3wNfajtddqNNvsSpfmXenyfLg)
+
 [![Watch the video](https://img.youtube.com/vi/ivN2NL9fgUM/maxresdefault.jpg)](https://www.youtube.com/watch?v=ivN2NL9fgUM)
 
-Sample images of predictions can be viewed from this link  -- >[Predicted doodle Images](https://drive.google.com/open?id=1rbRee0x3wNfajtddqNNvsSpfmXenyfLg)
+
 
 ## DataSet download:
 
